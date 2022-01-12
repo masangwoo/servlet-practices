@@ -14,4 +14,7 @@
 2. [model2 : mvc - Model+View(jsp)+Controller(servlet)]
 	- emailList02 
 	- guestbook02
+
+3. mysite
 	- mysite02
+				
