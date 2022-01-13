@@ -1,4 +1,4 @@
-package com.poscoict.guestbook01.dao;
+package com.poscoict.emaillist01.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,21 +8,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.poscoict.guestbook01.vo.GuestbookVo;
+import com.poscoict.emaillist01.vo.EmaillistVo;
 
-public class GuestbookDao {
-	public List<GuestbookVo> findAll() {
+public class EmaillistDao {
+	public List<EmaillistVo> findAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<GuestbookVo> result = new ArrayList<GuestbookVo>();
+		List<EmaillistVo> result = new ArrayList<EmaillistVo>();
 
 		try {
 
-			conn = getConnection();
+			conn = getconnConnection();
 
 			// 3. SQL 준비
-			String sql = "select no, name, date_format(reg_date,'%Y/%m/%d %H:%i:%s') as reg_date, message from guestbook  order by no desc";
+			String sql = "select no, first_name, last_name, email from emaillist order by no desc";
 			pstmt = conn.prepareStatement(sql);
 
 			// 4. 바인딩
@@ -31,16 +31,16 @@ public class GuestbookDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				int no = rs.getInt(1);
-				String name = rs.getString(2);
-				String reg_date = rs.getString(3);
-				String message = rs.getString(4);
+				long no = rs.getLong(1);
+				String firstName = rs.getString(2);
+				String lastName = rs.getString(3);
+				String email = rs.getString(4);
 
-				GuestbookVo vo = new GuestbookVo();
+				EmaillistVo vo = new EmaillistVo();
 				vo.setNo(no);
-				vo.setName(name);
-				vo.setReg_date(reg_date);
-				vo.setMessage(message);
+				vo.setFirstName(firstName);
+				vo.setLastName(lastName);
+				vo.setEmail(email);
 
 				result.add(vo);
 			}
@@ -66,23 +66,23 @@ public class GuestbookDao {
 		return result;
 	}
 
-	public boolean insert(GuestbookVo vo) {
+	public boolean insert(EmaillistVo vo) {
 		boolean result = false;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			conn = getConnection();
+			conn = getconnConnection();
 			
 			// 3. SQL 준비
-			String sql = "insert into guestbook values(null, ?,?,?, now())";
+			String sql = "insert into emaillist values(null, ?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 
 			// 4. 바인딩
-			pstmt.setString(1, vo.getName());
-			pstmt.setString(2, vo.getPassword());
-			pstmt.setString(3, vo.getMessage());
+			pstmt.setString(1, vo.getFirstName());
+			pstmt.setString(2, vo.getLastName());
+			pstmt.setString(3, vo.getEmail());
 			// 5. SQL 실행
 
 			result = pstmt.executeUpdate() == 1;
@@ -108,49 +108,7 @@ public class GuestbookDao {
 		return result;
 	}
 
-	public boolean delete(GuestbookVo vo) {
-		boolean result = false;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			conn = getConnection();
-			
-			// 3. SQL 준비
-			String sql = "delete from guestbook where no= ? and password = ?";
-			pstmt = conn.prepareStatement(sql);
-
-			// 4. 바인딩
-			pstmt.setInt(1, vo.getNo());
-			pstmt.setString(2, vo.getPassword());
-			
-			// 5. SQL 실행
-
-			result = pstmt.executeUpdate() == 1;
-
-		} catch (SQLException e) {
-			System.out.print("error : " + e.getMessage());
-		} finally {
-			// 자원정리
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-	}
-	
-	private Connection getConnection() throws SQLException{
+	private Connection getconnConnection() throws SQLException{
 		Connection conn =null;
 		try {
 			// 1. JDBC드라이버 로딩
