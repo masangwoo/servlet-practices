@@ -73,4 +73,8 @@ public class EmaillistDao {
 		return result;
 	}
 
+	public boolean insert(EmaillistVo vo) {
+		return false;
+	}
+
 }

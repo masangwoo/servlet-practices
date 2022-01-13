@@ -1,5 +1,11 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+﻿<%@page import="com.poscoict.emaillist01.vo.EmaillistVo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.poscoict.emaillist01.dao.EmaillistDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%
+	EmaillistDao dao = new EmaillistDao();
+	List<EmaillistVo> list = dao.findAll();
+%>
 
 <html>
 <head>
@@ -13,15 +19,15 @@
 	<table border="1" cellpadding="5" cellspacing="2">
 		<tr>
 			<td align=right>First name: </td>
-			<td><input type="text" name="fn" value="" placeholder="안"></td>
+			<td>안</td>
 		</tr>
 		<tr>
 			<td align=right width="110">Last name: </td>
-			<td width="110"><input type="text" name="fn" value="" placeholder="대혁"></td>
+			<td width="110">대혁</td>
 		</tr>
 		<tr>
 			<td align=right>Email address: </td>
-			<td><input type="text" name="fn" value="" placeholder="kickscar@gmail.com"></td>
+			<td>kickscar@gmail.com</td>
 		</tr>
 	</table>
 	<br>
