@@ -23,7 +23,7 @@ public class EmaillistDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// 2.연결하기
-			String url = "jdbc:mysql://localhost:3306/jdbcdb?characterEncoding=UTF-8&serverTimezone=UTC";
+			String url = "jdbc:mysql://localhost:3306/webdb?characterEncoding=UTF-8&serverTimezone=UTC";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 
 			// 3. SQL 준비
@@ -70,7 +70,7 @@ public class EmaillistDao {
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return result;
 	}
 
 }
