@@ -1,9 +1,10 @@
-<%@page import="com.poscoict.emaillist.vo.EmaillistVo"%>
+<%@page import="com.poscoict.mysite.vo.MysiteVo"%>
 <%@page import="java.util.List"%>
-<%@page import="com.poscoict.emaillist.dao.EmaillistDao"%><%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@page import="com.poscoict.mysite.dao.MysiteDao"%><%@ page
+	language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
-EmaillistDao dao = new EmaillistDao();
-	List<EmaillistVo> list = dao.findAll();
+List<MysiteVo> list = (List<MysiteVo>)request.getAttribute("list");
 %>
 
 <html>
@@ -16,19 +17,19 @@ EmaillistDao dao = new EmaillistDao();
 	<p>입력한 정보 내역입니다.</p>
 	<!-- 메일정보 리스트 -->
 	<%
-	for(EmaillistVo vo:list){
+	for(MysiteVo vo:list){
 	%>
 	<table border="1" cellpadding="5" cellspacing="2">
 		<tr>
-			<td align=right>First name: </td>
+			<td align=right>First name:</td>
 			<td><%= vo.getFirstName() %></td>
 		</tr>
 		<tr>
-			<td align=right width="110">Last name: </td>
+			<td align=right width="110">Last name:</td>
 			<td width="110"><%= vo.getLastName() %></td>
 		</tr>
 		<tr>
-			<td align=right>Email address: </td>
+			<td align=right>Email address:</td>
 			<td><%= vo.getEmail() %></td>
 		</tr>
 	</table>
@@ -38,8 +39,8 @@ EmaillistDao dao = new EmaillistDao();
 		}
 	%>
 	<p>
-	<a href="form.jsp">추가메일 등록</a>
-		
+		<a href="<%=request.getContextPath() %>/el?a=form">추가메일 등록</a>
+
 	</p>
 	<br>
 </body>

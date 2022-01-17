@@ -1,5 +1,5 @@
-<%@page import="com.poscoict.emaillist01.dao.EmaillistDao"%>
-<%@page import="com.poscoict.emaillist01.vo.EmaillistVo"%>
+<%@page import="com.poscoict.emaillist.dao.EmaillistDao"%>
+<%@page import="com.poscoict.emaillist.vo.EmaillistVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
