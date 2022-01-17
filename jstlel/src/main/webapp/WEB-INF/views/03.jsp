@@ -14,12 +14,11 @@
 	<h4>JSTL(forEach Tag) Test</h4>
 	
 	<c:set var="count" value="${3}"/>
-	<%
-		pageContext.setAttribute("count",3);
-	%>
 	
 	<c:forEach items="${list}" var="vo" varStatus="status">
 		[${count-status.index}][${status.index}:${status.count}][${vo.no} : ${vo.name}] <br>
 	</c:forEach>
+	
+		
 </body>
 </html>
