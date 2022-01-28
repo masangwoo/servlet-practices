@@ -1,10 +1,10 @@
-<%@page import="com.poscoict.mysite.vo.MysiteVo"%>
 <%@page import="java.util.List"%>
-<%@page import="com.poscoict.mysite.dao.MysiteDao"%><%@ page
-	language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="com.poscoict.emaillist.dao.*"%>
+<%@page import="com.poscoict.emaillist.vo.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
-List<MysiteVo> list = (List<MysiteVo>)request.getAttribute("list");
+List<EmaillistVo> list = (List<EmaillistVo>)request.getAttribute("list");
 %>
 
 <html>
@@ -17,7 +17,7 @@ List<MysiteVo> list = (List<MysiteVo>)request.getAttribute("list");
 	<p>입력한 정보 내역입니다.</p>
 	<!-- 메일정보 리스트 -->
 	<%
-	for(MysiteVo vo:list){
+	for(EmaillistVo vo:list){
 	%>
 	<table border="1" cellpadding="5" cellspacing="2">
 		<tr>

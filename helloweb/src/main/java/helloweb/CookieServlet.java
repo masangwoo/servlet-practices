@@ -39,7 +39,7 @@ public class CookieServlet extends HttpServlet {
 		//화면 출력
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println("<h1>방문횟수"+visitCount+"</h1>");		
+		out.println("<h1>방문횟수 : "+visitCount+"</h1>");		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
