@@ -1,5 +1,5 @@
 <%@page import="com.poscoict.guestbook.vo.GuestbookVo"%>
-<%@page import="com.poscoict.guestbook.repository.GuestbookRepository"%>
+<%@page import="com.poscoict.guestbook.dao.GuestbookDao"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@ GuestbookVo vo = new GuestbookVo();
 vo.setNo(no);
 vo.setPassword(password);
 
-new GuestbookRepository().delete(vo);
+new GuestbookDao().delete(vo);
 
 response.sendRedirect("/guestbook01");
 %>

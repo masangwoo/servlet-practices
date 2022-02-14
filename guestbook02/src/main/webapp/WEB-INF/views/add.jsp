@@ -1,4 +1,4 @@
-<%@page import="com.poscoict.guestbook.repository.GuestbookRepository"%>
+<%@page import="com.poscoict.guestbook.dao.GuestbookDao"%>
 <%@page import="com.poscoict.guestbook.vo.GuestbookVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,7 +13,7 @@
             vo.setPassword(password);
             vo.setMessage(message);
                     		
-            new GuestbookRepository().insert(vo);
+            new GuestbookDao().insert(vo);
                    		
             response.sendRedirect("/guestbook01");
     %>

@@ -1,10 +1,10 @@
-<%@page import="com.poscoict.guestbook.repository.GuestbookRepository"%>
+<%@page import="com.poscoict.guestbook.dao.GuestbookDao"%>
 <%@page import="com.poscoict.guestbook.vo.GuestbookVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    GuestbookRepository dao = new GuestbookRepository();
+    GuestbookDao dao = new GuestbookDao();
     	List<GuestbookVo> list = dao.findAll();
     %>
 <html>
